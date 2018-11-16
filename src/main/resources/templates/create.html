@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+<h1>Create Employee</h1>
+<span th:if="${message} " th:text="${message}"></span>
+<form th:action="@{/create}" method="post" th:object="${employee}">
+    <table>
+        <tr>
+            <td>Group_employee:</td>
+            <td> <input type="text" th:field="*{group_employee}"/></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td> <input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Sex:</td>
+            <td> <input type="text" th:field="*{sex}"/></td>
+        </tr>
+        <tr>
+            <td>Number:</td>
+            <td> <input type="text" th:field="*{number}"/></td>
+            <td th:if="${#fields.hasErrors('number')}" th:errors="*{number}">Phone Error</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td> <input type="text" th:field="*{email}"/></td>
+            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create Employee"></td>
+        </tr>
+    </table>
+    <a th:href="@{/}">Back to list</a><br>
+
+</form>
+</body>
+</html>
